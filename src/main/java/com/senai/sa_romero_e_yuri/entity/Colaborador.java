@@ -46,6 +46,10 @@ public class Colaborador {
 	}
 
 	public void setId(int id) {		
+	//	if (id = null ) {
+	//      throw new IllegalArgumentException("O ID deve ter exatamente 7 caracteres.");
+	//    } 
+	// DEIXAR COMENTADO PARA AJUSTAR DEPOIS !!!
 		this.id = id;
 	}
 
@@ -65,6 +69,9 @@ public class Colaborador {
 	}
 
 	public void setLogin(String login) {
+		if(login == null || login.isBlank()) {
+			throw new IllegalArgumentException("Login invalido");
+		}
 		this.login = login;
 	}
 
@@ -73,6 +80,9 @@ public class Colaborador {
 	}
 
 	public void setSenha(String senha) {
+		if(senha == null || senha.isBlank()) {
+			throw new IllegalArgumentException("Senha invalida");
+		}
 		this.senha = senha;
 	}
 
@@ -81,6 +91,9 @@ public class Colaborador {
 	}
 
 	public void setPerfil(String perfil) {
+		if(perfil == null || perfil.isBlank()) {
+			throw new IllegalArgumentException("Senha invalida");
+		}
 		this.perfil = perfil;
 	}
 
