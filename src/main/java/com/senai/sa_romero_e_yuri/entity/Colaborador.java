@@ -30,5 +30,68 @@ public class Colaborador {
 	
 	@Column(name = "status")
 	private boolean status;
+
+	public Colaborador(int id, String nome, String login, String senha, String perfil, boolean status) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.login = login;
+		this.senha = senha;
+		this.perfil = perfil;
+		this.status = status;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {		
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		if(nome == null || nome.isBlank()){
+			throw new IllegalArgumentException("Nome invalido");
+		}
+		this.nome = nome;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	
+	
 	
 }
