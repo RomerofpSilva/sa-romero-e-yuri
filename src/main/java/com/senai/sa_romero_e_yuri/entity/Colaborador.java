@@ -36,6 +36,8 @@ public class Colaborador {
 	@Column(name = "creat_at")
 	private LocalDate creat_at;
 
+	public Colaborador(){}
+	
 	public Colaborador(LocalDate creat_at, String nome, String cpf, LocalDate data_nascimento, String setor, String ativo) {
 		super();
 		this.nome = nome;
@@ -75,7 +77,9 @@ public class Colaborador {
 	}
 
 	public void setData_nascimento(LocalDate data_nascimento) {
-		if(data_nascimento == null || data_nascimento.isAfter(data_nascimento))
+		if(data_nascimento == null || data_nascimento.isAfter(data_nascimento)) {
+			throw new IllegalArgumentException("data invalida");
+		}
 		this.data_nascimento = data_nascimento;
 	}
 
@@ -106,7 +110,9 @@ public class Colaborador {
 	}
 
 	public void setCreat_at(LocalDate creat_at) {
-		if(creat_at == null || creat_at.isAfter(data_nascimento))
+		if(creat_at == null || creat_at.isAfter(data_nascimento)) {
+			throw new IllegalArgumentException("data invalida");
+		}
 		this.creat_at = creat_at;
 	}
 
