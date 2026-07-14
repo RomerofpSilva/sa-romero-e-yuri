@@ -1,7 +1,6 @@
 package com.senai.sa_romero_e_yuri.entity;
 
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,13 +31,16 @@ public class Epi {
 	private int quantidade_estoque;
 	
 	@Column(name = "validade")
-	private Date validade;
+	private LocalDate validade;
 	
 	@Column(name = "create_at")
-	private Timestamp create_at;
+	private LocalDate create_at;
+	
+	public Epi(){}
 
-	public Epi(String nome, String ca, String tipo, int quantidade_estoque, Date validade, Timestamp create_at) {
+	public Epi(int id_epi, String nome, String ca, String tipo, int quantidade_estoque, LocalDate validade, LocalDate create_at) {
 		super();
+		this.id_epi = id_epi;
 		this.nome = nome;
 		this.ca = ca;
 		this.tipo = tipo;
@@ -47,11 +49,22 @@ public class Epi {
 		this.create_at = create_at;
 	}
 
+	public int getId_epi() {
+		return id_epi;
+	}
+
+	public void setId_epi(int id_epi) {
+		this.id_epi = id_epi;
+	}
+
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
+		if(nome == null || nome.isBlank()) {
+			throw new IllegalArgumentException("Nome invalido");
+		}
 		this.nome = nome;
 	}
 
@@ -60,14 +73,20 @@ public class Epi {
 	}
 
 	public void setCa(String ca) {
+		if(ca == null || ca.isBlank()) {
+			throw new IllegalArgumentException("CA invalido");
+		}
 		this.ca = ca;
 	}
 
 	public String getTipo() {
 		return tipo;
 	}
-
+	
 	public void setTipo(String tipo) {
+		if(tipo == null || tipo.isBlank()) {
+			throw new IllegalArgumentException("Tipo invalido");
+		}
 		this.tipo = tipo;
 	}
 
@@ -76,22 +95,31 @@ public class Epi {
 	}
 
 	public void setQuantidade_estoque(int quantidade_estoque) {
+		if(quantidade_estoque < 0 ) {
+			throw new IllegalArgumentException("Qauntidade em estoque invalido");
+		}
 		this.quantidade_estoque = quantidade_estoque;
 	}
 
-	public Date getValidade() {
+	public LocalDate getValidade() {
 		return validade;
 	}
 
-	public void setValidade(Date validade) {
+	public void setValidade(LocalDate validade) {
+		if(validade == null || validade.isAfter(validade)) {
+			throw new IllegalArgumentException("Data invalida");
+		}
 		this.validade = validade;
 	}
 
-	public Timestamp getCreate_at() {
+	public LocalDate getCreate_at() {
 		return create_at;
 	}
 
-	public void setCreate_at(Timestamp create_at) {
+	public void setCreate_at(LocalDate create_at) {
+		if(create_at == null || create_at.isAfter(validade)) {
+			throw new IllegalArgumentException("Data invalida");
+		}
 		this.create_at = create_at;
 	}
 
