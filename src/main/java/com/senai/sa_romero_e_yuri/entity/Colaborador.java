@@ -82,5 +82,10 @@ public class Colaborador {
 		this.ativo = ativo;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Colaborador [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", data_nascimento=" + data_nascimento
+				+ ", setor=" + setor + ", ativo=" + ativo + "]";
+	}
+
 }
