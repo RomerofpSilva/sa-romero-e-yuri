@@ -1,5 +1,8 @@
 package com.senai.sa_romero_e_yuri.entity;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,21 +26,25 @@ public class Colaborador {
 	private String cpf;
 	
 	@Column(name = "data_nascimento")
-	private String data_nascimento;
+	private Date data_nascimento;
 	
 	@Column(name = "setor")
 	private String setor;
 	
 	@Column(name = "ativo")
-	private boolean ativo;
+	private String ativo;
+	
+	@Column(name = "creat_at")
+	private Timestamp creat_at;
 
-	public Colaborador(String nome, String cpf, String data_nascimento, String setor, boolean ativo) {
+	public Colaborador(Timestamp creat_at, String nome, String cpf, Date data_nascimento, String setor, String ativo) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.data_nascimento = data_nascimento;
 		this.setor = setor;
 		this.ativo = ativo;
+		this.creat_at = creat_at;
 	}
 
 	
@@ -47,6 +54,9 @@ public class Colaborador {
 	}
 
 	public void setNome(String nome) {
+		if(nome == null || nome.isBlank()) {
+			throw new IllegalArgumentException("nome invalido");
+		}
 		this.nome = nome;
 	}
 
@@ -55,14 +65,17 @@ public class Colaborador {
 	}
 
 	public void setCpf(String cpf) {
+		if(cpf == null || cpf.isBlank()) {
+			throw new IllegalArgumentException("cpf invalido");
+		}
 		this.cpf = cpf;
 	}
 
-	public String getData_nascimento() {
+	public Date getData_nascimento() {
 		return data_nascimento;
 	}
 
-	public void setData_nascimento(String data_nascimento) {
+	public void setData_nascimento(Date data_nascimento) {
 		this.data_nascimento = data_nascimento;
 	}
 
@@ -74,18 +87,14 @@ public class Colaborador {
 		this.setor = setor;
 	}
 
-	public boolean isAtivo() {
+	public String getAtivo() {
 		return ativo;
 	}
 
-	public void setAtivo(boolean ativo) {
+	public void setAtivo(String ativo) {
 		this.ativo = ativo;
 	}
 
-	@Override
-	public String toString() {
-		return "Colaborador [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", data_nascimento=" + data_nascimento
-				+ ", setor=" + setor + ", ativo=" + ativo + "]";
-	}
+	
 
 }
