@@ -38,8 +38,9 @@ public class Colaborador {
 
 	public Colaborador(){}
 	
-	public Colaborador(LocalDate creat_at, String nome, String cpf, LocalDate data_nascimento, String setor, String ativo) {
+	public Colaborador(int id, LocalDate creat_at, String nome, String cpf, LocalDate data_nascimento, String setor, String ativo) {
 		super();
+		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.data_nascimento = data_nascimento;
@@ -49,6 +50,14 @@ public class Colaborador {
 	}
 
 	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getNome() {
 		return nome;
