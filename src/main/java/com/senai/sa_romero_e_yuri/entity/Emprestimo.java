@@ -1,7 +1,6 @@
 package com.senai.sa_romero_e_yuri.entity;
 
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,24 +22,26 @@ public class Emprestimo {
 	private int quantidade;
 	
 	@Column(name = "data_retirada")
-	private Date data_retirada;
+	private LocalDate data_retirada;
 	
 	@Column(name = "data_devolucao_prevista")
-	private Date data_devolucao_prevista;
+	private LocalDate data_devolucao_prevista;
 	
 	@Column(name = "data_devolucao_real")
-	private Date data_devolucao_real;
+	private LocalDate data_devolucao_real;
 	
 	@Column(name = "status")
 	private String status;
 	
 	@Column(name = "create_at")
-	private Timestamp create_at;
-
+	private LocalDate create_at;
 	
-	public Emprestimo(int quantidade, Date data_retirada, Date data_devolucao_prevista, Date data_devolucao_real,
-			String status, Timestamp create_at) {
+	public Emprestimo(){}
+
+	public Emprestimo(int id_emprestimos, int quantidade, LocalDate data_retirada, LocalDate data_devolucao_prevista,
+			LocalDate data_devolucao_real, String status, LocalDate create_at) {
 		super();
+		this.id_emprestimos = id_emprestimos;
 		this.quantidade = quantidade;
 		this.data_retirada = data_retirada;
 		this.data_devolucao_prevista = data_devolucao_prevista;
@@ -49,35 +50,55 @@ public class Emprestimo {
 		this.create_at = create_at;
 	}
 	
+	public int getId_emprestimos() {
+		return id_emprestimos;
+	}
+
+	public void setId_emprestimos(int id_emprestimos) {
+		this.id_emprestimos = id_emprestimos;
+	}
+
 	public int getQuantidade() {
 		return quantidade;
 	}
 
 	public void setQuantidade(int quantidade) {
+		if(quantidade < 0 ) {
+			throw new IllegalArgumentException("quantidade invalida");
+		}
 		this.quantidade = quantidade;
 	}
 
-	public Date getData_retirada() {
+	public LocalDate getData_retirada() {
 		return data_retirada;
 	}
 
-	public void setData_retirada(Date data_retirada) {
+	public void setData_retirada(LocalDate data_retirada) {
+		if(data_retirada == null || data_retirada.isAfter(data_retirada)) {
+			throw new IllegalArgumentException("data invalida");
+		}
 		this.data_retirada = data_retirada;
 	}
 
-	public Date getData_devolucao_prevista() {
+	public LocalDate getData_devolucao_prevista() {
 		return data_devolucao_prevista;
 	}
 
-	public void setData_devolucao_prevista(Date data_devolucao_prevista) {
+	public void setData_devolucao_prevista(LocalDate data_devolucao_prevista) {
+		if(data_devolucao_prevista == null || data_devolucao_prevista.isAfter(data_devolucao_prevista)) {
+			throw new IllegalArgumentException("data invalida");
+		}
 		this.data_devolucao_prevista = data_devolucao_prevista;
 	}
 
-	public Date getData_devolucao_real() {
+	public LocalDate getData_devolucao_real() {
 		return data_devolucao_real;
 	}
 
-	public void setData_devolucao_real(Date data_devolucao_real) {
+	public void setData_devolucao_real(LocalDate data_devolucao_real) {
+		if(data_devolucao_real == null || data_devolucao_real.isAfter(data_devolucao_real)) {
+			throw new IllegalArgumentException("data invalida");
+		}
 		this.data_devolucao_real = data_devolucao_real;
 	}
 
@@ -86,14 +107,20 @@ public class Emprestimo {
 	}
 
 	public void setStatus(String status) {
+		if(status ==  null || status.isBlank()) {
+			throw new IllegalArgumentException("status invalido");
+		}
 		this.status = status;
 	}
 
-	public Timestamp getCreate_at() {
+	public LocalDate getCreate_at() {
 		return create_at;
 	}
 
-	public void setCreate_at(Timestamp create_at) {
+	public void setCreate_at(LocalDate create_at) {
+		if(create_at == null || create_at.isAfter(create_at)) {
+			throw new IllegalArgumentException("data invalida");
+		}
 		this.create_at = create_at;
 	}
 
@@ -103,5 +130,7 @@ public class Emprestimo {
 				+ data_retirada + ", data_devolucao_prevista=" + data_devolucao_prevista + ", data_devolucao_real="
 				+ data_devolucao_real + ", status=" + status + ", create_at=" + create_at + "]";
 	}
+
 	
+
 }
