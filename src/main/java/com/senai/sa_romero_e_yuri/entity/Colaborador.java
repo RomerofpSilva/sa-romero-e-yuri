@@ -1,7 +1,6 @@
 package com.senai.sa_romero_e_yuri.entity;
 
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,7 +25,7 @@ public class Colaborador {
 	private String cpf;
 	
 	@Column(name = "data_nascimento")
-	private Date data_nascimento;
+	private LocalDate data_nascimento;
 	
 	@Column(name = "setor")
 	private String setor;
@@ -35,9 +34,9 @@ public class Colaborador {
 	private String ativo;
 	
 	@Column(name = "creat_at")
-	private Timestamp creat_at;
+	private LocalDate creat_at;
 
-	public Colaborador(Timestamp creat_at, String nome, String cpf, Date data_nascimento, String setor, String ativo) {
+	public Colaborador(LocalDate creat_at, String nome, String cpf, LocalDate data_nascimento, String setor, String ativo) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
@@ -71,11 +70,12 @@ public class Colaborador {
 		this.cpf = cpf;
 	}
 
-	public Date getData_nascimento() {
+	public LocalDate getData_nascimento() {
 		return data_nascimento;
 	}
 
-	public void setData_nascimento(Date data_nascimento) {
+	public void setData_nascimento(LocalDate data_nascimento) {
+		if(data_nascimento == null || data_nascimento.isAfter(data_nascimento))
 		this.data_nascimento = data_nascimento;
 	}
 
@@ -84,6 +84,9 @@ public class Colaborador {
 	}
 
 	public void setSetor(String setor) {
+		if(setor == null || setor.isBlank()) {
+			throw new IllegalArgumentException("setor invalido");
+		}
 		this.setor = setor;
 	}
 
@@ -92,9 +95,25 @@ public class Colaborador {
 	}
 
 	public void setAtivo(String ativo) {
+		if(ativo == null || ativo.isBlank()) {
+			throw new IllegalArgumentException("nome invalido");
+		}
 		this.ativo = ativo;
 	}
 
-	
+	public LocalDate getCreat_at() {
+		return creat_at;
+	}
+
+	public void setCreat_at(LocalDate creat_at) {
+		if(creat_at == null || creat_at.isAfter(data_nascimento))
+		this.creat_at = creat_at;
+	}
+
+	@Override
+	public String toString() {
+		return "Colaborador [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", data_nascimento=" + data_nascimento
+				+ ", setor=" + setor + ", ativo=" + ativo + ", creat_at=" + creat_at + "]";
+	}
 
 }
