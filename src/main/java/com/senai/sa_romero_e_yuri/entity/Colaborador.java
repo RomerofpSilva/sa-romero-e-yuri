@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "colaborador")
+@Table(name = "colaboradores")
 public class Colaborador {
 
 	@Id
@@ -19,92 +19,68 @@ public class Colaborador {
 	@Column(name = "nome")
 	private String nome;
 	
-	@Column(name = "login")
-	private String login;
+	@Column(name = "cpf")
+	private String cpf;
 	
-	@Column(name = "senha")
-	private String senha;
+	@Column(name = "data_nascimento")
+	private String data_nascimento;
 	
-	@Column(name = "perfil")
-	private String perfil;
+	@Column(name = "setor")
+	private String setor;
 	
-	@Column(name = "status")
-	private boolean status;
+	@Column(name = "ativo")
+	private boolean ativo;
 
-	public Colaborador(int id, String nome, String login, String senha, String perfil, boolean status) {
+	public Colaborador(String nome, String cpf, String data_nascimento, String setor, boolean ativo) {
 		super();
-		this.id = id;
 		this.nome = nome;
-		this.login = login;
-		this.senha = senha;
-		this.perfil = perfil;
-		this.status = status;
+		this.cpf = cpf;
+		this.data_nascimento = data_nascimento;
+		this.setor = setor;
+		this.ativo = ativo;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {		
-	//	if (id = null ) {
-	//      throw new IllegalArgumentException("O ID deve ter exatamente 7 caracteres.");
-	//    } 
-	// DEIXAR COMENTADO PARA AJUSTAR DEPOIS !!!
-		this.id = id;
-	}
+	
 
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
-		if(nome == null || nome.isBlank()){
-			throw new IllegalArgumentException("Nome invalido");
-		}
 		this.nome = nome;
 	}
 
-	public String getLogin() {
-		return login;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setLogin(String login) {
-		if(login == null || login.isBlank()) {
-			throw new IllegalArgumentException("Login invalido");
-		}
-		this.login = login;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getData_nascimento() {
+		return data_nascimento;
 	}
 
-	public void setSenha(String senha) {
-		if(senha == null || senha.isBlank()) {
-			throw new IllegalArgumentException("Senha invalida");
-		}
-		this.senha = senha;
+	public void setData_nascimento(String data_nascimento) {
+		this.data_nascimento = data_nascimento;
 	}
 
-	public String getPerfil() {
-		return perfil;
+	public String getSetor() {
+		return setor;
 	}
 
-	public void setPerfil(String perfil) {
-		if(perfil == null || perfil.isBlank()) {
-			throw new IllegalArgumentException("Senha invalida");
-		}
-		this.perfil = perfil;
+	public void setSetor(String setor) {
+		this.setor = setor;
 	}
 
-	public boolean isStatus() {
-		return status;
+	public boolean isAtivo() {
+		return ativo;
 	}
 
-	public void setStatus(boolean status) {
-		this.status = status;
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
-	
-	
+
 	
 }
