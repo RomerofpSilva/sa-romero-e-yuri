@@ -16,46 +16,34 @@ public class Emprestimo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_emprestimos")
-	private int id_emprestimos;
+	private int idEmprestimos;
 	
 	@Column(name = "quantidade")
 	private int quantidade;
 	
 	@Column(name = "data_retirada")
-	private LocalDate data_retirada;
+	private LocalDate dataRetirada;
 	
 	@Column(name = "data_devolucao_prevista")
-	private LocalDate data_devolucao_prevista;
+	private LocalDate dataDevolucaoPrevista;
 	
 	@Column(name = "data_devolucao_real")
-	private LocalDate data_devolucao_real;
+	private LocalDate dataDevolucaoReal;
 	
 	@Column(name = "status")
 	private String status;
 	
-	@Column(name = "create_at")
-	private LocalDate create_at;
+	@Column(name = "created_at")
+	private LocalDate createdAt;
 	
 	public Emprestimo(){}
-
-	public Emprestimo(int id_emprestimos, int quantidade, LocalDate data_retirada, LocalDate data_devolucao_prevista,
-			LocalDate data_devolucao_real, String status, LocalDate create_at) {
-		super();
-		this.id_emprestimos = id_emprestimos;
-		this.quantidade = quantidade;
-		this.data_retirada = data_retirada;
-		this.data_devolucao_prevista = data_devolucao_prevista;
-		this.data_devolucao_real = data_devolucao_real;
-		this.status = status;
-		this.create_at = create_at;
-	}
 	
 	public int getId_emprestimos() {
-		return id_emprestimos;
+		return idEmprestimos;
 	}
 
-	public void setId_emprestimos(int id_emprestimos) {
-		this.id_emprestimos = id_emprestimos;
+	public void setId_emprestimos(int idEmprestimos) {
+		this.idEmprestimos = idEmprestimos;
 	}
 
 	public int getQuantidade() {
@@ -70,36 +58,36 @@ public class Emprestimo {
 	}
 
 	public LocalDate getData_retirada() {
-		return data_retirada;
+		return dataRetirada;
 	}
 
-	public void setData_retirada(LocalDate data_retirada) {
-		if(data_retirada == null) {
+	public void setData_retirada(LocalDate dataRetirada) {
+		if(dataRetirada == null) {
 			throw new IllegalArgumentException("data invalida");
 		}
-		this.data_retirada = data_retirada;
+		this.dataRetirada = dataRetirada;
 	}
 
 	public LocalDate getData_devolucao_prevista() {
-		return data_devolucao_prevista;
+		return dataDevolucaoPrevista;
 	}
 
-	public void setData_devolucao_prevista(LocalDate data_devolucao_prevista) {
-		if(data_devolucao_prevista == null || data_devolucao_prevista.isAfter(data_devolucao_prevista)) {
+	public void setData_devolucao_prevista(LocalDate dataDevolucaoPrevista) {
+		if(dataDevolucaoPrevista == null || dataDevolucaoPrevista.isAfter(dataDevolucaoPrevista)) {
 			throw new IllegalArgumentException("data invalida");
 		}
-		this.data_devolucao_prevista = data_devolucao_prevista;
+		this.dataDevolucaoPrevista = dataDevolucaoPrevista;
 	}
 
 	public LocalDate getData_devolucao_real() {
-		return data_devolucao_real;
+		return dataDevolucaoReal;
 	}
 
-	public void setData_devolucao_real(LocalDate data_devolucao_real) {
-		if(data_devolucao_real == null || data_devolucao_real.isAfter(data_devolucao_real)) {
+	public void setData_devolucao_real(LocalDate dataDevolucaoReal) {
+		if(dataDevolucaoReal == null || dataDevolucaoReal.isAfter(dataDevolucaoReal)) {
 			throw new IllegalArgumentException("data invalida");
 		}
-		this.data_devolucao_real = data_devolucao_real;
+		this.dataDevolucaoReal = dataDevolucaoReal;
 	}
 
 	public String getStatus() {
@@ -114,21 +102,21 @@ public class Emprestimo {
 	}
 
 	public LocalDate getCreate_at() {
-		return create_at;
+		return createdAt;
 	}
 
-	public void setCreate_at(LocalDate create_at) {
-		if(create_at == null || create_at.isAfter(create_at)) {
+	public void setCreate_at(LocalDate createdAt) {
+		if(createdAt == null || createdAt.isAfter(createdAt)) {
 			throw new IllegalArgumentException("data invalida");
 		}
-		this.create_at = create_at;
+		this.createdAt = createdAt;
 	}
 
 	@Override
 	public String toString() {
-		return "Emprestimo [id_emprestimos=" + id_emprestimos + ", quantidade=" + quantidade + ", data_retirada="
-				+ data_retirada + ", data_devolucao_prevista=" + data_devolucao_prevista + ", data_devolucao_real="
-				+ data_devolucao_real + ", status=" + status + ", create_at=" + create_at + "]";
+		return "Emprestimo [id_emprestimos=" + idEmprestimos + ", quantidade=" + quantidade + ", data_retirada="
+				+ dataRetirada + ", data_devolucao_prevista=" + dataDevolucaoPrevista + ", data_devolucao_real="
+				+ dataDevolucaoReal + ", status=" + status + ", create_at=" + createdAt + "]";
 	}
 
 	
