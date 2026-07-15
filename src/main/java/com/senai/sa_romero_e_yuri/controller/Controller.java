@@ -92,10 +92,10 @@ public class Controller implements CommandLineRunner {
 		Colaborador colaborador = new Colaborador();
 		colaborador.setNome(nomeColaborador);
 		colaborador.setCpf(cpfColaborador);
-		colaborador.setData_nascimento(dataNascimento);
+		colaborador.setDataNascimento(dataNascimento);
 		colaborador.setSetor(setor);
 		colaborador.setAtivo(ativo);
-		colaborador.setCreat_at(LocalDate.now());
+		colaborador.setCreatedAt(LocalDate.now());
 
 		colaboradorService.cadastrarColaborador(colaborador);
 		System.out.println("Colaborador criado com sucesso!");
@@ -141,10 +141,9 @@ public class Controller implements CommandLineRunner {
 		colaborador.setId(id);
 		colaborador.setNome(nomeColaborador);
 		colaborador.setCpf(cpfColaborador);
-		colaborador.setData_nascimento(dataNascimento);
+		colaborador.setDataNascimento(dataNascimento);
 		colaborador.setSetor(setor);
 		colaborador.setAtivo(ativo);
-		colaborador.setCreat_at(LocalDate.now()); // ou buscar a data de criação original no Service
 
 		colaboradorService.atualizarColaborador(colaborador);
 		System.out.println("Colaborador atualizado com sucesso!");
@@ -184,9 +183,9 @@ public class Controller implements CommandLineRunner {
 		epi.setNome(nome);
 		epi.setCa(ca);
 		epi.setTipo(tipo);
-		epi.setQuantidade_estoque(quantidade);
+		epi.setQuantidadeEstoque(quantidade);
 		epi.setValidade(validade);
-		epi.setCreate_at(LocalDate.now());
+		epi.setCreatedAt(LocalDate.now());
 
 		epiService.cadastrarEpi(epi);
 		System.out.println("Epi criado com sucesso!");
@@ -229,13 +228,13 @@ public class Controller implements CommandLineRunner {
 		LocalDate validade = LocalDate.parse(validadeStr, formatter);
 
 		Epi epi = new Epi();
-		epi.setId_epi(id);
+		epi.setIdEpi(id);
 		epi.setNome(nome);
 		epi.setCa(ca);
 		epi.setTipo(tipo);
-		epi.setQuantidade_estoque(quantidade);
+		epi.setQuantidadeEstoque(quantidade);
 		epi.setValidade(validade);
-		epi.setCreate_at(LocalDate.now());
+		epi.setCreatedAt(LocalDate.now());
 
 		epiService.atualizarEpi(epi);
 		System.out.println("Epi atualizado com sucesso!");
