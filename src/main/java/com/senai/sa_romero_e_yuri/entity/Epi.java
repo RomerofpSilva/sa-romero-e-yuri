@@ -16,7 +16,7 @@ public class Epi {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_epi")
-	private int id_epi;
+	private int idEpi;
 	
 	@Column(name = "nome")
 	private String nome;
@@ -28,33 +28,22 @@ public class Epi {
 	private String tipo;
 	
 	@Column(name = "quantidade_estoque")
-	private int quantidade_estoque;
+	private int quantidadeEstoque;
 	
 	@Column(name = "validade")
 	private LocalDate validade;
 	
 	@Column(name = "create_at")
-	private LocalDate create_at;
+	private LocalDate createdAt;
 	
 	public Epi(){}
 
-	public Epi(int id_epi, String nome, String ca, String tipo, int quantidade_estoque, LocalDate validade, LocalDate create_at) {
-		super();
-		this.id_epi = id_epi;
-		this.nome = nome;
-		this.ca = ca;
-		this.tipo = tipo;
-		this.quantidade_estoque = quantidade_estoque;
-		this.validade = validade;
-		this.create_at = create_at;
+	public int getIdEpi() {
+		return idEpi;
 	}
 
-	public int getId_epi() {
-		return id_epi;
-	}
-
-	public void setId_epi(int id_epi) {
-		this.id_epi = id_epi;
+	public void setIdEpi(int idEpi) {
+		this.idEpi = idEpi;
 	}
 
 	public String getNome() {
@@ -90,15 +79,15 @@ public class Epi {
 		this.tipo = tipo;
 	}
 
-	public int getQuantidade_estoque() {
-		return quantidade_estoque;
+	public int getQuantidadeEstoque() {
+		return quantidadeEstoque;
 	}
 
-	public void setQuantidade_estoque(int quantidade_estoque) {
-		if(quantidade_estoque < 0 ) {
+	public void setQuantidadeEstoque(int quantidadeEstoque) {
+		if(quantidadeEstoque < 0 ) {
 			throw new IllegalArgumentException("Qauntidade em estoque invalido");
 		}
-		this.quantidade_estoque = quantidade_estoque;
+		this.quantidadeEstoque = quantidadeEstoque;
 	}
 
 	public LocalDate getValidade() {
@@ -112,21 +101,16 @@ public class Epi {
 		this.validade = validade;
 	}
 
-	public LocalDate getCreate_at() {
-		return create_at;
+	public LocalDate getCreateAt() {
+		return createdAt;
 	}
 
-	public void setCreate_at(LocalDate create_at) {
-		if(create_at == null || create_at.isAfter(validade)) {
+	public void setCreateAt(LocalDate createdAt) {
+		if(createdAt == null || createdAt.isAfter(validade)) {
 			throw new IllegalArgumentException("Data invalida");
 		}
-		this.create_at = create_at;
+		this.createdAt = createdAt;
 	}
 
-	@Override
-	public String toString() {
-		return "Epi [id_epi=" + id_epi + ", nome=" + nome + ", ca=" + ca + ", tipo=" + tipo + ", quantidade_estoque="
-				+ quantidade_estoque + ", validade=" + validade + ", create_at=" + create_at + "]";
-	}
-		
+	
 }
