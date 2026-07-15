@@ -25,7 +25,7 @@ public class Colaborador {
 	private String cpf;
 	
 	@Column(name = "data_nascimento")
-	private LocalDate data_nascimento;
+	private LocalDate dataNascimento;
 	
 	@Column(name = "setor")
 	private String setor;
@@ -33,23 +33,10 @@ public class Colaborador {
 	@Column(name = "ativo")
 	private String ativo;
 	
-	@Column(name = "creat_at")
-	private LocalDate creat_at;
+	@Column(name = "created_at")
+	private LocalDate createdAt;
 
-	public Colaborador(){}
-	
-	public Colaborador(int id, LocalDate creat_at, String nome, String cpf, LocalDate data_nascimento, String setor, String ativo) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.cpf = cpf;
-		this.data_nascimento = data_nascimento;
-		this.setor = setor;
-		this.ativo = ativo;
-		this.creat_at = creat_at;
-	}
-
-	
+	public Colaborador(){}	
 
 	public int getId() {
 		return id;
@@ -81,15 +68,15 @@ public class Colaborador {
 		this.cpf = cpf;
 	}
 
-	public LocalDate getData_nascimento() {
-		return data_nascimento;
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public void setData_nascimento(LocalDate data_nascimento) {
-		if(data_nascimento == null || data_nascimento.isBefore(data_nascimento)) {
+	public void setDataNascimento(LocalDate dataNascimento) {
+		if(dataNascimento == null || dataNascimento.isBefore(dataNascimento)) {
 			throw new IllegalArgumentException("data invalida");
 		}
-		this.data_nascimento = data_nascimento;
+		this.dataNascimento = dataNascimento;
 	}
 
 	public String getSetor() {
@@ -114,23 +101,23 @@ public class Colaborador {
 		this.ativo = ativo;
 	}
 
-	public LocalDate getCreat_at() {
-		return creat_at;
+	public LocalDate getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setCreat_at(LocalDate creat_at) {
-		if(creat_at == null || creat_at.isAfter(data_nascimento)) {
+	public void setCreatedAt(LocalDate createdAt) {
+		if(createdAt == null || createdAt.isAfter(createdAt)) {
 			throw new IllegalArgumentException("data invalida");
 		}
-		this.creat_at = creat_at;
+		this.createdAt = createdAt;
 	}
-	
-	
 
 	@Override
 	public String toString() {
-		return "Colaborador [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", data_nascimento=" + data_nascimento
-				+ ", setor=" + setor + ", ativo=" + ativo + ", creat_at=" + creat_at + "]";
+		return "Colaborador [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento
+				+ ", setor=" + setor + ", ativo=" + ativo + ", createdAt=" + createdAt + "]";
 	}
+	
+	
 
 }
