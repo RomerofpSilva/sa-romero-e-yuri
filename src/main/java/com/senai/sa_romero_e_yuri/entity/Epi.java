@@ -27,7 +27,7 @@ public class Epi {
 	@Column(name = "tipo")
 	private String tipo;
 	
-	@Column(name = "nome")
+	@Column(name = "quantidade_estoque")
 	private int quantidade_estoque;
 	
 	@Column(name = "validade")
