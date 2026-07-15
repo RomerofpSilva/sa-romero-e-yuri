@@ -105,7 +105,7 @@ public class Epi {
 		return createdAt;
 	}
 
-	public void setCreateAt(LocalDate createdAt) {
+	public void setCreatedAt(LocalDate createdAt) {
 		if(createdAt == null || createdAt.isAfter(validade)) {
 			throw new IllegalArgumentException("Data invalida");
 		}
