@@ -29,7 +29,6 @@ public class Controller implements CommandLineRunner {
 	@Autowired
 	private EpiService epiService;
 
-	// Formatador para facilitar a digitação de datas no terminal
 	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	@Override
@@ -173,7 +172,7 @@ public class Controller implements CommandLineRunner {
 
 		System.out.println("Insira a quantidade em estoque: ");
 		int quantidade = input.nextInt();
-		input.nextLine(); // limpar buffer
+		input.nextLine();
 
 		System.out.println("Insira a validade do EPI (dd/MM/yyyy): ");
 		String validadeStr = input.nextLine();
