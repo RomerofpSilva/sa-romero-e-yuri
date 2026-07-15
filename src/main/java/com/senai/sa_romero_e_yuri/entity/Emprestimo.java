@@ -74,7 +74,7 @@ public class Emprestimo {
 	}
 
 	public void setData_retirada(LocalDate data_retirada) {
-		if(data_retirada == null || data_retirada.isAfter(data_retirada)) {
+		if(data_retirada == null) {
 			throw new IllegalArgumentException("data invalida");
 		}
 		this.data_retirada = data_retirada;
