@@ -86,7 +86,7 @@ public class Colaborador {
 	}
 
 	public void setData_nascimento(LocalDate data_nascimento) {
-		if(data_nascimento == null) {
+		if(data_nascimento == null || data_nascimento.isBefore(data_nascimento)) {
 			throw new IllegalArgumentException("data invalida");
 		}
 		this.data_nascimento = data_nascimento;
